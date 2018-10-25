@@ -266,8 +266,8 @@ public class VisibleField {
 
         if (getMineField().inRange(row, col)) {
 
-            // if squares are uncovered or its states is MINE_GUESS or QUESTION, stop the recursion
-            if (squareState[row][col] != COVERED) {
+            // if squares are uncovered or its states is MINE_GUESS, stop the recursion
+            if ((0 <= squareState[row][col] && squareState[row][col] <= 8) || squareState[row][col] == MINE_GUESS) {
 
                 return;
 
@@ -311,8 +311,8 @@ public class VisibleField {
                     return false;
                 }
 
-                // the square cannot be on QUESTION state
-                if (squareState[row][col] == QUESTION) {
+                // if the square is on QUESTION state, it must have a mine
+                if (squareState[row][col] == QUESTION && !getMineField().hasMine(row, col)) {
                     return false;
                 }
 
@@ -360,6 +360,14 @@ public class VisibleField {
                     } else if ((squareState[i][j] == COVERED) && (getMineField().hasMine(i, j))) {
 
                         squareState[i][j] = MINE;
+
+                        // the state of square is QUESTIO and there is no mine on it. its state is still QUESTIO
+                    } else if ((squareState[i][j] == QUESTION) && (!getMineField().hasMine(i, j))) {
+                        squareState[i][j] = QUESTION;
+
+                        // the state of square is QUESTIO and there is a mine on it. its state turns to MINE
+                    } else if ((squareState[i][j] == QUESTION) && (getMineField().hasMine(i, j))) {
+                        squareState[i][j] = MINE;
                     }
                 }
             }
@@ -379,10 +387,10 @@ public class VisibleField {
 
         if (getMineField().inRange(row, col)) {
 
-            // When winning, all the squares should be uncovered up. Or not, there must be a mine on. Make its state turn to MINE_GUESS
+            // When winning, all the squares should be uncovered up. If not, there must be a mine on it. Make its state turn to MINE_GUESS
             for (int i = 0; i < numRows; i++) {
                 for (int j = 0; j < numCols; j++) {
-                    if ((squareState[i][j] == COVERED) && (getMineField().hasMine(i, j))) {
+                    if (getMineField().hasMine(i, j)) {
                         squareState[i][j] = MINE_GUESS;
                     }
                 }
