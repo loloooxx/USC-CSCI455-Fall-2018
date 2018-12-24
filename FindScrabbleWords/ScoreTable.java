@@ -1,8 +1,3 @@
-// Name: Wei-Hsiu Chang
-// USC NetID: 6625095261
-// CS 455 PA4
-// Fall 2018
-
 /**
  The scores of scrabble letters and compute the total score of a word.
  Letters that occur more often are worth less and letters that occur less often are worth more

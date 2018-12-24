@@ -1,9 +1,3 @@
-// Name: Wei-Hsiu Chang
-// USC NetID: 6625095261
-// CS 455 PA4
-// Fall 2018
-
-
 /**
  A dictionary of all anagram sets.
  Note: the processing is case-sensitive; so if the dictionary has all lower

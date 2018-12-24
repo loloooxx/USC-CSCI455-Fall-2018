@@ -1,9 +1,3 @@
-// Name: Wei-Hsiu Chang
-// USC NetID: 6625095261
-// CS 455 PA4
-// Fall 2018
-
-
 /**
  A console-based program that finds all possible words that can be made from a rack of Scrabble tiles.
  Taking an optional command-line argument for the dictionary file name. If that argument is left off,

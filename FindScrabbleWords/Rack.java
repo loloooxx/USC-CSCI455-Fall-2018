@@ -1,9 +1,3 @@
-// Name: Wei-Hsiu Chang
-// USC NetID: 6625095261
-// CS 455 PA4
-// Fall 2018
-
-
 /**
  A Rack of Scrabble tiles
  */
